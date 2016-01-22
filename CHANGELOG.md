@@ -20,3 +20,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.9.0] - 2025-07-01
 
 ### Added
+
+- Corpus pinning: every run records the corpus hash, and a mismatch is a usage
+  error rather than a silent comparison.
+- `--corpus` accepts a pinned hash alongside the corpus file.
+
