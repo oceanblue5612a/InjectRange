@@ -35,3 +35,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.7.0] - 2023-04-25
 
 ### Added
+
+- Guard configuration files with per-class sensitivity.
+- A real comparison of the strict and permissive sample guards.
+
