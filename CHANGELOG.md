@@ -25,3 +25,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   error rather than a silent comparison.
 - `--corpus` accepts a pinned hash alongside the corpus file.
 
+## [0.8.0] - 2024-06-04
+
+### Added
+
+- The sixth breach class: exfiltration framing, with a worked sample probe.
