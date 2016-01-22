@@ -30,3 +30,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - The sixth breach class: exfiltration framing, with a worked sample probe.
+- Per-class pass rates in the JSON report.
+
+## [0.7.0] - 2023-04-25
+
+### Added
