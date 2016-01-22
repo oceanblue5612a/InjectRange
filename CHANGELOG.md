@@ -44,3 +44,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - JSON report with fixed keys, including per-probe outcomes.
+- `harness` and `report` subcommands.
+
+## [0.5.0] - 2020-12-22
+
+### Added
