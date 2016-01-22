@@ -39,3 +39,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Guard configuration files with per-class sensitivity.
 - A real comparison of the strict and permissive sample guards.
 
+## [0.6.0] - 2022-02-15
+
+### Added
+
+- JSON report with fixed keys, including per-probe outcomes.
