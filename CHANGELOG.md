@@ -49,3 +49,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.5.0] - 2020-12-22
 
 ### Added
+
+- The first four breach classes: instruction override, role confusion,
+  delimiter escape and encoding smuggling.
+- Probe corpus format with one probe per line.
+
