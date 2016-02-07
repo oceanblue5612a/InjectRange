@@ -59,3 +59,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - Guard model with a decision per probe and the deciding pattern quoted.
+- Orphan probe detection: probes that no class claims.
+
+## [0.3.0] - 2017-12-26
+
