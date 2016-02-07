@@ -54,3 +54,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   delimiter escape and encoding smuggling.
 - Probe corpus format with one probe per line.
 
+## [0.4.0] - 2019-01-29
+
+### Added
+
+- Guard model with a decision per probe and the deciding pattern quoted.
