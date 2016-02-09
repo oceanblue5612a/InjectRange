@@ -63,3 +63,8 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [0.3.0] - 2017-12-26
 
+### Added
+
+- Strict validation for probe ids, classes and payload fields.
+- `version` subcommand and the first report shape.
+
