@@ -5,3 +5,4 @@ PY ?= python
 test:
 	$(PY) -m pytest -q
 
+lint:
