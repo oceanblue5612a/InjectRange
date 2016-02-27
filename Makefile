@@ -6,3 +6,4 @@ test:
 	$(PY) -m pytest -q
 
 lint:
+	$(PY) -m compileall -q src
