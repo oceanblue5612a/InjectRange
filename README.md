@@ -69,3 +69,18 @@ python -m injectrange version
 
 ```
 injectrange 0.1.0
+```
+
+
+## Commands
+
+The CLI has four subcommands. With no subcommand it prints usage and exits 2.
+
+```
+python -m injectrange
+```
+
+```
+usage: injectrange [-h] {run,corpus,diff,version} ...
+
+Deterministic regression range for prompt-injection defences.
