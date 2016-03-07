@@ -54,3 +54,18 @@ match the pin.
 ## Install
 
 Install into the current environment in editable mode:
+
+```
+pip install -e .
+```
+
+The project targets Python 3.11 and has no runtime dependencies beyond the
+standard library. You can also run it without installing by pointing Python at
+the source tree:
+
+```
+python -m injectrange version
+```
+
+```
+injectrange 0.1.0
