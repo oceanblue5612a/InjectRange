@@ -84,3 +84,18 @@ python -m injectrange
 usage: injectrange [-h] {run,corpus,diff,version} ...
 
 Deterministic regression range for prompt-injection defences.
+
+positional arguments:
+  {run,corpus,diff,version}
+    run                 evaluate a guard against the corpus
+    corpus              summarize and verify the corpus
+    diff                compare two guards against the corpus
+    version             print the version
+
+options:
+  -h, --help            show this help message and exit
+```
+
+| Command | Purpose | Reads | Emits |
+| --- | --- | --- | --- |
+| `run <guard>` | Evaluate one guard config against the pinned corpus. | guard JSON, corpus JSON | per-class breach matrix |
