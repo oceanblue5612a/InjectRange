@@ -99,3 +99,18 @@ options:
 | Command | Purpose | Reads | Emits |
 | --- | --- | --- | --- |
 | `run <guard>` | Evaluate one guard config against the pinned corpus. | guard JSON, corpus JSON | per-class breach matrix |
+| `corpus` | Summarise the corpus and verify its pinned digest. | corpus JSON | per-class counts, digest |
+| `diff <base> <head>` | Compare two guard configs against the corpus. | two guard JSONs, corpus JSON | per-class change table |
+| `version` | Print the version and exit clean. | nothing | version string |
+
+Every subcommand that touches the corpus accepts `--corpus` to point at a
+different file, `--pin` to supply an expected digest, and `--allow-unpinned` to
+skip the digest check. `corpus` also accepts `--show-digest`, which prints only
+the computed digest and exits, so you can update a pin after a deliberate corpus
+change.
+
+
+## The six breach classes
+
+Each corpus entry is tagged with exactly one breach class, and the harness
+reports one line per class. The descriptions below say what a filter is being
