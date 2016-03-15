@@ -114,3 +114,17 @@ change.
 
 Each corpus entry is tagged with exactly one breach class, and the harness
 reports one line per class. The descriptions below say what a filter is being
+asked to recognise, at the level of the family of technique. The corpus entries
+themselves are deliberately short skeletons written to exercise a substring
+matcher, so this section names the shape of each class rather than reproducing
+any usable string.
+
+### Instruction override
+
+A probe in this class attempts to cancel or replace the standing instructions,
+telling the assistant that the earlier guidance no longer applies. A guard
+closes the class when it recognises the family of phrasings that assert prior
+directions are void and that fresh ones take their place, rather than matching a
+single literal sentence.
+
+### Role confusion
