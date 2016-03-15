@@ -128,3 +128,18 @@ directions are void and that fresh ones take their place, rather than matching a
 single literal sentence.
 
 ### Role confusion
+
+A probe here attempts to reassign the assistant to a new persona or account, on
+the theory that a renamed actor is exempt from the original constraints. Closing
+the class means treating an attempt to redefine who the assistant is as
+suspicious in itself, independent of the specific persona named.
+
+### Delimiter escape
+
+A probe in this class attempts to break out of a quoting, fencing, or wrapping
+boundary so that following text is read as a fresh instruction rather than as
+quoted content. A guard closes the class when it accounts for the boundary
+markers a hostile input can forge, not only the ones the application itself
+emits. In the strict sample this class is left open on purpose, which is
+discussed below.
+
