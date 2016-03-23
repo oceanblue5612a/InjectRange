@@ -173,3 +173,18 @@ id, each is reduced to its id, class, and text, and the whole is serialised with
 sorted keys and no incidental whitespace. Hashing that canonical form means the
 digest is stable across platforms and indifferent to how the source file is
 formatted or how its entries are ordered. Reformatting the JSON or reordering
+the entries does not change the digest, while changing any id, class, or text
+does. A test in the suite confirms the digest is unchanged when the pattern list
+is reversed.
+
+Summarise and verify the corpus:
+
+```
+python -m injectrange corpus
+```
+
+```
+corpus: 1.0.0
+digest: 236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a0a470
+
+class                   count
