@@ -143,3 +143,18 @@ markers a hostile input can forge, not only the ones the application itself
 emits. In the strict sample this class is left open on purpose, which is
 discussed below.
 
+### Encoding smuggling
+
+A probe here hides a directive behind an encoding or transform, so a filter that
+only inspects the surface text sees nothing to block. Closing the class requires
+recognising the request to decode-then-act as a signal on its own, before any
+decoding happens, rather than trying to enumerate encodings.
+
+### Tool coercion
+
+A probe in this class attempts to force an unrequested tool or command
+invocation, steering the assistant toward an action the user never asked for. A
+guard closes the class by treating an unsolicited push toward a privileged
+capability as something to reject, regardless of which tool is named.
+
+### Exfiltration framing
