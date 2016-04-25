@@ -188,3 +188,18 @@ corpus: 1.0.0
 digest: 236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a0a470
 
 class                   count
+-----------------------------
+Instruction override        4
+Role confusion              4
+Delimiter escape            4
+Encoding smuggling          4
+Tool coercion               4
+Exfiltration framing        4
+-----------------------------
+total                      24
+```
+
+The pinned digest lives in `src/injectrange/cli.py` as `PINNED_DIGEST` and is
+checked against the loaded corpus on every `run` and `diff`. Its value is:
+
+```
