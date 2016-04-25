@@ -203,3 +203,18 @@ The pinned digest lives in `src/injectrange/cli.py` as `PINNED_DIGEST` and is
 checked against the loaded corpus on every `run` and `diff`. Its value is:
 
 ```
+236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a0a470
+```
+
+To recompute the digest after a deliberate corpus change, print it directly and
+copy it into the pin:
+
+```
+python -m injectrange corpus --show-digest
+```
+
+```
+236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a0a470
+```
+
+
