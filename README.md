@@ -218,3 +218,18 @@ python -m injectrange corpus --show-digest
 ```
 
 
+## Writing a guard config
+
+A guard config is a JSON object with a name and a list of blocking rules. Each
+rule is a substring; a probe is blocked if any rule occurs in its lowercased
+text, so matching is case-insensitive. The shape is:
+
+```json
+{
+  "name": "strict",
+  "rules": [
+    "ignore all previous",
+    "you are now",
+    "..."
+  ]
+}
