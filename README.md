@@ -233,3 +233,18 @@ text, so matching is case-insensitive. The shape is:
     "..."
   ]
 }
+```
+
+The name is required and must be non-empty; the rules must be a list, and each
+rule must be a non-empty string. Rules are lowercased when the config loads, so
+the guard behaves deterministically regardless of the case you write them in. A
+malformed config is a usage error, not a crash: a missing name, a non-list
+`rules`, or an empty rule each raise a clear `GuardError` and exit 2.
+
+This guard is a reference target, not a filter you should ship. It exists so the
+regression range has something concrete and reproducible to evaluate. Because
+you declare it, the corpus tests your declared rules, never a model.
+
+
+## A real comparison of the two sample guards
+
