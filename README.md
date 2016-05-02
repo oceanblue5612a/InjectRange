@@ -248,3 +248,18 @@ you declare it, the corpus tests your declared rules, never a model.
 
 ## A real comparison of the two sample guards
 
+Two sample guards ship in `samples/`. The permissive guard has two rules and is
+meant to leave every class open, giving the diff a clear baseline. The strict
+guard has twenty rules covering five of the six classes.
+
+Run the permissive guard. It breaches every class and exits 1:
+
+```
+python -m injectrange run samples/guard-permissive.json
+```
+
+```
+guard: permissive
+corpus: 1.0.0
+digest: 236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a0a470
+
