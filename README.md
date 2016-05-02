@@ -263,3 +263,18 @@ guard: permissive
 corpus: 1.0.0
 digest: 236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a0a470
 
+class                   total blocked  leaked  status
+-----------------------------------------------------
+Instruction override        4       1       3  BREACH
+Role confusion              4       1       3  BREACH
+Delimiter escape            4       0       4  BREACH
+Encoding smuggling          4       0       4  BREACH
+Tool coercion               4       0       4  BREACH
+Exfiltration framing        4       0       4  BREACH
+-----------------------------------------------------
+breached classes: 6 of 6
+```
+
+The permissive guard's two rules each catch exactly one probe in their class,
+which is why instruction override and role confusion show one blocked and three
+leaked while the four classes with no matching rule leak all four.
