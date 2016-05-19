@@ -337,3 +337,18 @@ The matrix figure below is built from the two runs above, with the real leaked
 over total counts baked into each cell.
 
 ![Breach matrix, six classes by two guard configs. Each cell shows leaked over
+total probes. The permissive guard breaches all six classes; the strict guard
+closes five and leaves delimiter escape open](docs/assets/breach-matrix.svg)
+
+Read a `run` matrix one row per class. A class is `closed` when every probe in
+it was blocked, and `BREACH` when at least one leaked. A single leaked probe is
+enough to mark the class breached, because the class is a promise about a family
+of technique and a partial promise is a broken one. The trailing count of
+breached classes is what determines the exit code.
+
+Read a `diff` by the change column. `closed` means fewer probes leaked in the
+head than in the base, an improvement. `opened` means more leaked, a regression,
+and it is the case CI is meant to catch. `same` means the leak count did not
+move. The two totals at the foot, classes opened and classes closed, summarise
+the direction of the change.
+
