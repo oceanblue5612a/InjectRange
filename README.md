@@ -367,3 +367,18 @@ The `run` matrix carries these fields:
 | `digest` | The canonical sha256 digest of the loaded corpus. |
 | `class` | The breach class title, one row per class, in fixed taxonomy order. |
 | `total` | Number of probes in that class. |
+| `blocked` | Probes the guard blocked. |
+| `leaked` | Probes that passed the guard. |
+| `status` | `closed` if none leaked, `BREACH` if at least one did. |
+| `breached classes: N of M` | Count of breached classes over total classes. |
+
+The `diff` table carries these fields:
+
+| Field | Meaning |
+| --- | --- |
+| `base guard` / `head guard` | The two guard names being compared. |
+| `class` | Breach class title, in fixed taxonomy order. |
+| `base leaked` | Probes that leaked under the base guard. |
+| `head leaked` | Probes that leaked under the head guard. |
+| `change` | `opened`, `closed`, or `same`, from comparing the two leak counts. |
+| `classes opened` | Count of classes where more probes leaked in the head. |
