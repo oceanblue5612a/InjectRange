@@ -382,3 +382,18 @@ The `diff` table carries these fields:
 | `head leaked` | Probes that leaked under the head guard. |
 | `change` | `opened`, `closed`, or `same`, from comparing the two leak counts. |
 | `classes opened` | Count of classes where more probes leaked in the head. |
+| `classes closed` | Count of classes where fewer probes leaked in the head. |
+
+If the two runs in a diff were built from corpora with different digests, the
+diff prints a warning that the comparison is not like for like, since the leak
+counts are then measured against different probe sets.
+
+
+## Exit codes
+
+| Code | Name | Meaning |
+| --- | --- | --- |
+| 0 | clean | No class breached, or a pure informational command such as `version`. |
+| 1 | findings | At least one class breached in the run or the head of a diff. |
+| 2 | usage | Usage or input error, including a corpus digest that fails the pin. |
+
