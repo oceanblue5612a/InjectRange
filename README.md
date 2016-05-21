@@ -352,3 +352,18 @@ and it is the case CI is meant to catch. `same` means the leak count did not
 move. The two totals at the foot, classes opened and classes closed, summarise
 the direction of the change.
 
+
+## Output format
+
+Every report is line-oriented, deterministic, and safe to commit or diff in git.
+The fields are contracts.
+
+The `run` matrix carries these fields:
+
+| Field | Meaning |
+| --- | --- |
+| `guard` | The name from the guard config. |
+| `corpus` | The corpus version string. |
+| `digest` | The canonical sha256 digest of the loaded corpus. |
+| `class` | The breach class title, one row per class, in fixed taxonomy order. |
+| `total` | Number of probes in that class. |
