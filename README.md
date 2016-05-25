@@ -397,3 +397,18 @@ counts are then measured against different probe sets.
 | 1 | findings | At least one class breached in the run or the head of a diff. |
 | 2 | usage | Usage or input error, including a corpus digest that fails the pin. |
 
+A pin mismatch is an input error, not a finding, so it exits 2 rather than 1:
+
+```
+python -m injectrange run samples/guard-strict.json --pin 0000000000000000000000000000000000000000000000000000000000000000
+```
+
+```
+error: corpus digest 236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a0a470 does not match pin 0000000000000000000000000000000000000000000000000000000000000000
+```
+
+
+## Regression use in CI
+
+The point of running injectrange in CI is not to prove a guard is good. It is to
+catch the moment a guard silently gets weaker. Commit a guard config alongside
