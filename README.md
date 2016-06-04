@@ -442,3 +442,18 @@ The honest boundaries of this tool are load-bearing, not fine print.
   cover the probes in this corpus, which is a much narrower claim than being
   safe against prompt injection.
 - The delimiter escape class is left open in the strict sample on purpose, so
+  the diff has real movement to show. It is not a claim that the class is
+  unclosable.
+
+
+## Design decisions
+
+**Test a local guard, not a live model.** Calling a model would make every run
+non-deterministic, slow, and dependent on network access and credentials, and
+the result would blur two questions: did the model behave, and did the filter
+work. injectrange answers only the second, deliberately. A guard you declare in
+a file is reproducible, reviewable in a diff, and fully under your control, which
+is exactly what a regression range needs. The cost is that the tool says nothing
+about a model, and the limitations section states that plainly.
+
+**Report per class, not one score.** A single headline number hides which
