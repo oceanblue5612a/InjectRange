@@ -412,3 +412,18 @@ error: corpus digest 236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a
 
 The point of running injectrange in CI is not to prove a guard is good. It is to
 catch the moment a guard silently gets weaker. Commit a guard config alongside
+your code, run it against the pinned corpus on every change, and let the exit
+code fail the build when a class breaches that used to close.
+
+Because the corpus is pinned, a red build has exactly two possible causes: the
+guard changed, or the corpus pin was changed on purpose. Both are things a
+reviewer should see. A run that used to report `breached classes: 0 of 6` and
+now reports a non-zero count is a guard that lost coverage, and the matrix names
+the class that opened.
+
+For a change-over-change view, keep the previous guard config in the repository
+and run `diff` between it and the new one. Any class in the `opened` column is a
+regression to explain before merging. The diff output is deterministic text, so
+it reviews cleanly in a pull request.
+
+
