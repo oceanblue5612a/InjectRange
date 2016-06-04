@@ -457,3 +457,18 @@ is exactly what a regression range needs. The cost is that the tool says nothing
 about a model, and the limitations section states that plainly.
 
 **Report per class, not one score.** A single headline number hides which
+family of technique regressed. A guard could lose all of one class and gain a
+probe in another and net to the same score, while its actual coverage shifted.
+The per-class matrix makes a regression legible: the failing row names the class
+that opened, and the diff names the direction of every change. The cost is a
+wider report, which is why the output is a compact fixed-width table rather than
+prose.
+
+**Pin the corpus by a canonical digest, not the raw bytes.** Hashing the raw
+file would make the pin brittle: reformatting the JSON or reordering entries
+would break it for no real reason. Hashing a canonical, order-independent form
+ties the pin to the meaning of the corpus, so it moves only when the content
+moves, which is the only time a pin should move.
+
+
+## Repository layout
