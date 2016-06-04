@@ -427,3 +427,18 @@ regression to explain before merging. The diff output is deterministic text, so
 it reviews cleanly in a pull request.
 
 
+## Limitations
+
+The honest boundaries of this tool are load-bearing, not fine print.
+
+- The reference guard is a case-insensitive substring matcher. It is a
+  reproducible target for regression testing, not a production filter, and it
+  does not model semantics, paraphrase, or multi-turn context.
+- The corpus is a small set of synthetic skeletons, four probes per class. It is
+  not a survey of real attacks, and passing it does not certify a real defence.
+- Results describe only the declared guard config against this corpus. They say
+  nothing about any model's behaviour, because no model is involved.
+- Passing the range is not a security guarantee. It means the rules you wrote
+  cover the probes in this corpus, which is a much narrower claim than being
+  safe against prompt injection.
+- The delimiter escape class is left open in the strict sample on purpose, so
