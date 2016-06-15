@@ -487,3 +487,17 @@ injectrange/
   samples/
     README.md                  notes on the sample fixtures
     corpus.json                the 24-probe pinned corpus, four per class
+    guard-permissive.json      two-rule guard, breaches every class
+    guard-strict.json          twenty-rule guard, closes five classes
+  src/
+    injectrange/
+      __init__.py              package version
+      __main__.py              enables python -m injectrange
+      cli.py                   argument parsing, subcommands, PINNED_DIGEST
+      classes.py               the six breach classes, in fixed order
+      corpus.py                load, canonical digest, integrity checks
+      guard.py                 the reference substring guard
+      harness.py               run the corpus against a guard, per-class tally
+      report.py                render the matrix, diff, and corpus summary
+  tests/
+    test_injectrange.py        26 stdlib unittest cases
