@@ -472,3 +472,18 @@ moves, which is the only time a pin should move.
 
 
 ## Repository layout
+
+```
+injectrange/
+  README.md                    this document
+  CHANGELOG.md                 release notes, starting at 0.1.0
+  LICENSE                      MIT license
+  pyproject.toml               package metadata, entry point, Python 3.11+
+  .gitignore                   ignored paths
+  docs/
+    assets/
+      logo.svg                 wordmark, blocked and breaching probe states
+      breach-matrix.svg        matrix figure built from the two sample runs
+  samples/
+    README.md                  notes on the sample fixtures
+    corpus.json                the 24-probe pinned corpus, four per class
