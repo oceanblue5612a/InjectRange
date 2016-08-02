@@ -5,3 +5,4 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "injectrange"
 version = "1.0.0"
+description = "Deterministic regression range for prompt-injection defences."
