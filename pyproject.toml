@@ -8,3 +8,4 @@ version = "1.0.0"
 description = "Deterministic regression range for prompt-injection defences."
 readme = "README.md"
 requires-python = ">=3.11"
+license = { text = "MIT" }
