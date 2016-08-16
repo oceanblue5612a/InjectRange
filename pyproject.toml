@@ -9,3 +9,5 @@ description = "Deterministic regression range for prompt-injection defences."
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
+authors = [{ name = "the injectrange authors" }]
+keywords = ["prompt-injection", "regression", "guard", "corpus", "security"]
