@@ -13,3 +13,4 @@ authors = [{ name = "the injectrange authors" }]
 keywords = ["prompt-injection", "regression", "guard", "corpus", "security"]
 
 [project.scripts]
+injectrange = "injectrange.cli:main"
