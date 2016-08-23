@@ -16,3 +16,4 @@ keywords = ["prompt-injection", "regression", "guard", "corpus", "security"]
 injectrange = "injectrange.cli:main"
 
 [tool.setuptools]
+package-dir = { "" = "src" }
