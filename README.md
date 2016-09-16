@@ -501,3 +501,66 @@ injectrange/
       report.py                render the matrix, diff, and corpus summary
   tests/
     test_injectrange.py        26 stdlib unittest cases
+```
+
+
+## Glossary
+
+| Term | Meaning |
+| --- | --- |
+| Probe | One corpus entry: an id, a breach class, and a short skeleton of text. |
+| Breach class | One family of injection technique. There are six, in fixed order. |
+| Corpus | The versioned, pinned set of probes the guard is evaluated against. |
+| Guard | A user-declared config of blocking substring rules, the tested target. |
+| Blocked | A probe caught by at least one guard rule. |
+| Leaked | A probe not caught by any guard rule. |
+| Breach | A class with at least one leaked probe. |
+| Closed | A class with no leaked probes. |
+| Digest | The canonical, order-independent sha256 that pins the corpus. |
+| Pin | The expected digest checked on every run against the corpus. |
+| Matrix | The per-class report for a single run. |
+| Diff | The per-class change report between two runs. |
+
+
+## Verification
+
+The suite is standard-library `unittest`, no third-party test runner. Run it
+from the project root:
+
+```
+python -m unittest discover -s tests -v
+```
+
+The final lines of that run in this session were:
+
+```
+----------------------------------------------------------------------
+Ran 26 tests in 0.009s
+
+OK
+```
+
+The 26 tests cover the taxonomy order and lookups, corpus loading and shape,
+digest stability and order independence, rejection of an unknown class and a
+duplicate id, case-insensitive guard matching and bad-config rejection, the
+harness tallies and their ordering, deterministic rendering of the matrix and
+diff, and every CLI subcommand with its exit code including the pin mismatch and
+the no-command case. The timing figure is from an unspecified machine and is
+indicative, not a guarantee.
+
+
+## Roadmap
+
+These are directions, not dated promises.
+
+- Optional JSON output for the matrix and diff, for machine consumption in CI.
+- A way to declare more than one corpus version and pin each independently.
+- A per-probe verbose mode that names which rule blocked each probe, for
+  debugging a guard config.
+
+
+## License
+
+MIT, see [LICENSE](LICENSE).
+
+<!-- draft note 96 -->
