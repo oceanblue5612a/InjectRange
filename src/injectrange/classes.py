@@ -5,3 +5,9 @@ expected to reject. The corpus tags every pattern with exactly one class, and
 the harness reports a per-class result so a regression shows up as a named class
 opening rather than a single opaque score change.
 """
+
+from __future__ import annotations
+
+from typing import Dict, List, NamedTuple
+
+
