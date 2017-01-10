@@ -17,3 +17,8 @@ class BreachClass(NamedTuple):
     key: str
     title: str
     description: str
+
+
+# Ordered so reports and matrices are stable across runs.
+BREACH_CLASSES: List[BreachClass] = [
+    BreachClass(
