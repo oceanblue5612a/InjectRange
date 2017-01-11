@@ -22,3 +22,9 @@ class BreachClass(NamedTuple):
 # Ordered so reports and matrices are stable across runs.
 BREACH_CLASSES: List[BreachClass] = [
     BreachClass(
+        key="instruction_override",
+        title="Instruction override",
+        description="Attempts to cancel or replace the standing instructions.",
+    ),
+    BreachClass(
+        key="role_confusion",
