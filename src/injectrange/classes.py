@@ -28,3 +28,9 @@ BREACH_CLASSES: List[BreachClass] = [
     ),
     BreachClass(
         key="role_confusion",
+        title="Role confusion",
+        description="Attempts to reassign the assistant to a new persona or role.",
+    ),
+    BreachClass(
+        key="delimiter_escape",
+        title="Delimiter escape",
