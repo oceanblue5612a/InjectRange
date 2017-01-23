@@ -34,3 +34,9 @@ BREACH_CLASSES: List[BreachClass] = [
     BreachClass(
         key="delimiter_escape",
         title="Delimiter escape",
+        description="Attempts to break out of a quoting or fencing boundary.",
+    ),
+    BreachClass(
+        key="encoding_smuggling",
+        title="Encoding smuggling",
+        description="Attempts to hide directives behind an encoding or transform.",
