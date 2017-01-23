@@ -40,3 +40,9 @@ BREACH_CLASSES: List[BreachClass] = [
         key="encoding_smuggling",
         title="Encoding smuggling",
         description="Attempts to hide directives behind an encoding or transform.",
+    ),
+    BreachClass(
+        key="tool_coercion",
+        title="Tool coercion",
+        description="Attempts to force an unrequested tool or command invocation.",
+    ),
