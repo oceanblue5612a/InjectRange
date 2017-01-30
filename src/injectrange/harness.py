@@ -17,3 +17,9 @@ from .guard import Guard
 
 class ClassOutcome(NamedTuple):
     """Per-class tally: total probes, how many leaked, whether it breached."""
+
+    cls: str
+    total: int
+    leaked: int
+
+    @property
