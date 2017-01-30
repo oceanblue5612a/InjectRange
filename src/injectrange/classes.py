@@ -52,3 +52,9 @@ BREACH_CLASSES: List[BreachClass] = [
         description="Attempts to frame a request as a reason to reveal held secrets.",
     ),
 ]
+
+CLASS_KEYS: List[str] = [c.key for c in BREACH_CLASSES]
+
+_BY_KEY: Dict[str, BreachClass] = {c.key: c for c in BREACH_CLASSES}
+
+
