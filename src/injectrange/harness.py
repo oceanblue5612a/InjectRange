@@ -23,3 +23,9 @@ class ClassOutcome(NamedTuple):
     leaked: int
 
     @property
+    def blocked(self) -> int:
+        return self.total - self.leaked
+
+    @property
+    def breached(self) -> bool:
+        return self.leaked > 0
