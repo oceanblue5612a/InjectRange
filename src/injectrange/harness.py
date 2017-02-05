@@ -29,3 +29,9 @@ class ClassOutcome(NamedTuple):
     @property
     def breached(self) -> bool:
         return self.leaked > 0
+
+
+class RunResult(NamedTuple):
+    """A full run: which guard, which corpus, and the per-class outcomes."""
+
+    guard_name: str
