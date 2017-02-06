@@ -41,3 +41,9 @@ class RunResult(NamedTuple):
 
     @property
     def breached_classes(self) -> List[str]:
+        return [o.cls for o in self.outcomes if o.breached]
+
+    @property
+    def any_breach(self) -> bool:
+        return any(o.breached for o in self.outcomes)
+
