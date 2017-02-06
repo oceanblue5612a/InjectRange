@@ -35,3 +35,9 @@ class RunResult(NamedTuple):
     """A full run: which guard, which corpus, and the per-class outcomes."""
 
     guard_name: str
+    corpus_version: str
+    corpus_digest: str
+    outcomes: List[ClassOutcome]
+
+    @property
+    def breached_classes(self) -> List[str]:
