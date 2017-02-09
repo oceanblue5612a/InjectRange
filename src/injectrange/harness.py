@@ -53,3 +53,9 @@ def run(corpus: Corpus, guard: Guard) -> RunResult:
 
     Outcomes are ordered by the fixed taxonomy so two runs diff cleanly.
     """
+    totals: Dict[str, int] = {key: 0 for key in classes.CLASS_KEYS}
+    leaked: Dict[str, int] = {key: 0 for key in classes.CLASS_KEYS}
+
+    for pattern in corpus.patterns:
+        totals[pattern.cls] += 1
+        if not guard.blocks(pattern.text):
