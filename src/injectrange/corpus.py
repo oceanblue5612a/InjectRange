@@ -25,3 +25,11 @@ class Pattern(NamedTuple):
 
 
 class Corpus(NamedTuple):
+    """A loaded corpus with its version and computed digest."""
+
+    version: str
+    patterns: List[Pattern]
+    digest: str
+
+
+class CorpusError(Exception):
