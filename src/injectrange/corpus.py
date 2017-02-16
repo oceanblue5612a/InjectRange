@@ -33,3 +33,11 @@ class Corpus(NamedTuple):
 
 
 class CorpusError(Exception):
+    """Raised when the corpus is malformed or fails integrity checks."""
+
+
+def _canonical_bytes(version: str, patterns: List[Pattern]) -> bytes:
+    """Build the canonical byte form that the digest is computed over.
+
+    The form is deterministic: patterns are sorted by id and serialized with
+    sorted keys and no incidental whitespace, so formatting of the source file
