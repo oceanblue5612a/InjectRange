@@ -17,3 +17,11 @@ from . import classes
 
 
 class Pattern(NamedTuple):
+    """One corpus entry: an id, a breach class key, and the probe text."""
+
+    id: str
+    cls: str
+    text: str
+
+
+class Corpus(NamedTuple):
