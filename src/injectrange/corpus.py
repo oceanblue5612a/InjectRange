@@ -41,3 +41,11 @@ def _canonical_bytes(version: str, patterns: List[Pattern]) -> bytes:
 
     The form is deterministic: patterns are sorted by id and serialized with
     sorted keys and no incidental whitespace, so formatting of the source file
+    does not change the digest.
+    """
+    ordered = sorted(patterns, key=lambda p: p.id)
+    payload = {
+        "corpus_version": version,
+        "patterns": [
+            {"id": p.id, "cls": p.cls, "text": p.text} for p in ordered
+        ],
