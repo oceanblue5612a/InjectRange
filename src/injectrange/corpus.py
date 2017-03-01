@@ -49,3 +49,11 @@ def _canonical_bytes(version: str, patterns: List[Pattern]) -> bytes:
         "patterns": [
             {"id": p.id, "cls": p.cls, "text": p.text} for p in ordered
         ],
+    }
+    return json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+
+
+def compute_digest(version: str, patterns: List[Pattern]) -> str:
+    """Return the sha256 hex digest of the canonical corpus form."""
+    return hashlib.sha256(_canonical_bytes(version, patterns)).hexdigest()
+
