@@ -57,3 +57,11 @@ def compute_digest(version: str, patterns: List[Pattern]) -> str:
     """Return the sha256 hex digest of the canonical corpus form."""
     return hashlib.sha256(_canonical_bytes(version, patterns)).hexdigest()
 
+
+def load(path: str) -> Corpus:
+    """Load a corpus file, validate its structure, and compute its digest.
+
+    Raises CorpusError on any structural problem, including an unknown breach
+    class or a duplicate pattern id.
+    """
+    try:
