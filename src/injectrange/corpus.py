@@ -65,3 +65,11 @@ def load(path: str) -> Corpus:
     class or a duplicate pattern id.
     """
     try:
+        with open(path, "r", encoding="utf-8") as handle:
+            raw = json.load(handle)
+    except (OSError, ValueError) as exc:
+        raise CorpusError("could not read corpus %r: %s" % (path, exc))
+
+    if not isinstance(raw, dict):
+        raise CorpusError("corpus root must be an object")
+
