@@ -81,3 +81,11 @@ def load(path: str) -> Corpus:
     if not isinstance(entries, list) or not entries:
         raise CorpusError("patterns must be a non-empty list")
 
+    seen: Dict[str, bool] = {}
+    patterns: List[Pattern] = []
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            raise CorpusError("pattern %d must be an object" % index)
+        pid = entry.get("id")
+        cls = entry.get("cls")
+        text = entry.get("text")
