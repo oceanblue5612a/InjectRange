@@ -73,3 +73,11 @@ def load(path: str) -> Corpus:
     if not isinstance(raw, dict):
         raise CorpusError("corpus root must be an object")
 
+    version = raw.get("corpus_version")
+    if not isinstance(version, str) or not version:
+        raise CorpusError("corpus_version must be a non-empty string")
+
+    entries = raw.get("patterns")
+    if not isinstance(entries, list) or not entries:
+        raise CorpusError("patterns must be a non-empty list")
+
