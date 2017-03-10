@@ -89,3 +89,11 @@ def load(path: str) -> Corpus:
         pid = entry.get("id")
         cls = entry.get("cls")
         text = entry.get("text")
+        if not isinstance(pid, str) or not pid:
+            raise CorpusError("pattern %d has an invalid id" % index)
+        if pid in seen:
+            raise CorpusError("duplicate pattern id %r" % pid)
+        seen[pid] = True
+        if not classes.is_known(cls):
+            raise CorpusError("pattern %r has unknown class %r" % (pid, cls))
+        if not isinstance(text, str) or not text:
