@@ -12,3 +12,9 @@ A breach class breaches when at least one probe in that class is not blocked.
 """
 
 from __future__ import annotations
+
+import json
+from typing import List, NamedTuple
+
+from . import classes
+
