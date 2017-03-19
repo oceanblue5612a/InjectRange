@@ -18,3 +18,10 @@ from typing import List, NamedTuple
 
 from . import classes
 
+
+class GuardError(Exception):
+    """Raised when a guard config is malformed."""
+
+
+class Guard(NamedTuple):
+    """A named guard with a case-insensitive list of blocking substrings."""
