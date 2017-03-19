@@ -6,3 +6,9 @@ probe. This is not a production filter. It is a reference target so a regression
 range has something concrete and reproducible to evaluate. Because the guard is
 declared in a config file the user controls, the corpus tests the guard, not any
 model.
+
+A probe is judged blocked if any rule substring occurs in its lowercased text.
+A breach class breaches when at least one probe in that class is not blocked.
+"""
+
+from __future__ import annotations
