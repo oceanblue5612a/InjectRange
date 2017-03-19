@@ -25,3 +25,9 @@ class GuardError(Exception):
 
 class Guard(NamedTuple):
     """A named guard with a case-insensitive list of blocking substrings."""
+
+    name: str
+    rules: List[str]
+
+    def blocks(self, text: str) -> bool:
+        """Report whether the guard blocks a probe text."""
