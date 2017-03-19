@@ -31,3 +31,9 @@ class Guard(NamedTuple):
 
     def blocks(self, text: str) -> bool:
         """Report whether the guard blocks a probe text."""
+        lowered = text.lower()
+        return any(rule in lowered for rule in self.rules)
+
+    def matching_rule(self, text: str) -> str:
+        """Return the first rule that blocks the text, or an empty string."""
+        lowered = text.lower()
