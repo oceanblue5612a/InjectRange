@@ -50,3 +50,9 @@ def from_config(raw: dict) -> Guard:
 
         {"name": "strict", "rules": ["ignore all previous", "you are now", ...]}
 
+    Raises GuardError on any structural problem. Rules are lowercased so the
+    guard is case-insensitive and its behaviour is deterministic.
+    """
+    if not isinstance(raw, dict):
+        raise GuardError("guard config must be an object")
+    name = raw.get("name")
