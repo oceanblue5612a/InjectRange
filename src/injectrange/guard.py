@@ -43,3 +43,10 @@ class Guard(NamedTuple):
         return ""
 
 
+def from_config(raw: dict) -> Guard:
+    """Build a guard from a parsed config object.
+
+    Expected shape:
+
+        {"name": "strict", "rules": ["ignore all previous", "you are now", ...]}
+
