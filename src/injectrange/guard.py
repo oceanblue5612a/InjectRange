@@ -37,3 +37,9 @@ class Guard(NamedTuple):
     def matching_rule(self, text: str) -> str:
         """Return the first rule that blocks the text, or an empty string."""
         lowered = text.lower()
+        for rule in self.rules:
+            if rule in lowered:
+                return rule
+        return ""
+
+
