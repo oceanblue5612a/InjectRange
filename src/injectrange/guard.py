@@ -56,3 +56,9 @@ def from_config(raw: dict) -> Guard:
     if not isinstance(raw, dict):
         raise GuardError("guard config must be an object")
     name = raw.get("name")
+    if not isinstance(name, str) or not name:
+        raise GuardError("guard name must be a non-empty string")
+    rules = raw.get("rules")
+    if not isinstance(rules, list):
+        raise GuardError("guard rules must be a list")
+    cleaned: List[str] = []
