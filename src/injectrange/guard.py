@@ -62,3 +62,10 @@ def from_config(raw: dict) -> Guard:
     if not isinstance(rules, list):
         raise GuardError("guard rules must be a list")
     cleaned: List[str] = []
+    for index, rule in enumerate(rules):
+        if not isinstance(rule, str) or not rule:
+            raise GuardError("rule %d must be a non-empty string" % index)
+        cleaned.append(rule.lower())
+    return Guard(name=name, rules=cleaned)
+
+
