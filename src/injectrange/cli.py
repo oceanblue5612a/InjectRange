@@ -14,3 +14,15 @@ Exit codes:
 
 from __future__ import annotations
 
+import argparse
+import os
+import sys
+from typing import List, Optional
+
+from . import __version__
+from . import corpus as corpus_mod
+from . import guard as guard_mod
+from . import harness, report
+
+# The corpus is pinned to this canonical sha256 digest. A run refuses to
+# proceed if the loaded corpus does not match, unless the pin is overridden on
