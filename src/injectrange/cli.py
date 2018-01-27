@@ -26,3 +26,15 @@ from . import harness, report
 
 # The corpus is pinned to this canonical sha256 digest. A run refuses to
 # proceed if the loaded corpus does not match, unless the pin is overridden on
+# the command line. Recompute with: injectrange corpus --show-digest
+PINNED_DIGEST = "236cbebaab82a1a00f5ab0643dce0db33dd8ef5c08f2a77e8bf69ea467a0a470"
+
+EXIT_CLEAN = 0
+EXIT_FINDINGS = 1
+EXIT_USAGE = 2
+
+
+def _default_corpus_path() -> str:
+    """Return the packaged sample corpus path, used when none is given."""
+    here = os.path.dirname(os.path.abspath(__file__))
+    root = os.path.dirname(os.path.dirname(here))
