@@ -50,3 +50,15 @@ def _load_corpus(path: str, pin: str, allow_unpinned: bool) -> corpus_mod.Corpus
     corpus = corpus_mod.load(path)
     if not allow_unpinned and not corpus_mod.verify(corpus, pin):
         raise corpus_mod.CorpusError(
+            "corpus digest %s does not match pin %s" % (corpus.digest, pin))
+    return corpus
+
+
+def _cmd_run(args: argparse.Namespace) -> int:
+    try:
+        corpus = _load_corpus(args.corpus, args.pin, args.allow_unpinned)
+        guard = guard_mod.load(args.guard)
+    except (corpus_mod.CorpusError, guard_mod.GuardError) as exc:
+        sys.stderr.write("error: %s\n" % exc)
+        return EXIT_USAGE
+    result = harness.run(corpus, guard)
