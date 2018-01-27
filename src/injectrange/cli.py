@@ -62,3 +62,15 @@ def _cmd_run(args: argparse.Namespace) -> int:
         sys.stderr.write("error: %s\n" % exc)
         return EXIT_USAGE
     result = harness.run(corpus, guard)
+    _emit(report.render_matrix(result))
+    return EXIT_FINDINGS if result.any_breach else EXIT_CLEAN
+
+
+def _cmd_corpus(args: argparse.Namespace) -> int:
+    try:
+        corpus = corpus_mod.load(args.corpus)
+    except corpus_mod.CorpusError as exc:
+        sys.stderr.write("error: %s\n" % exc)
+        return EXIT_USAGE
+    if args.show_digest:
+        sys.stdout.write(corpus.digest + "\n")
