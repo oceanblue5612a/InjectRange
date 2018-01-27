@@ -74,3 +74,15 @@ def _cmd_corpus(args: argparse.Namespace) -> int:
         return EXIT_USAGE
     if args.show_digest:
         sys.stdout.write(corpus.digest + "\n")
+        return EXIT_CLEAN
+    counts = corpus_mod.counts_by_class(corpus)
+    _emit(report.render_corpus_summary(corpus.version, corpus.digest, counts))
+    if not args.allow_unpinned and not corpus_mod.verify(corpus, args.pin):
+        sys.stderr.write(
+            "error: corpus digest does not match pin %s\n" % args.pin)
+        return EXIT_USAGE
+    return EXIT_CLEAN
+
+
+def _cmd_diff(args: argparse.Namespace) -> int:
+    try:
