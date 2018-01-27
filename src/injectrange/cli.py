@@ -38,3 +38,15 @@ def _default_corpus_path() -> str:
     """Return the packaged sample corpus path, used when none is given."""
     here = os.path.dirname(os.path.abspath(__file__))
     root = os.path.dirname(os.path.dirname(here))
+    return os.path.join(root, "samples", "corpus.json")
+
+
+def _emit(lines: List[str]) -> None:
+    for line in lines:
+        sys.stdout.write(line + "\n")
+
+
+def _load_corpus(path: str, pin: str, allow_unpinned: bool) -> corpus_mod.Corpus:
+    corpus = corpus_mod.load(path)
+    if not allow_unpinned and not corpus_mod.verify(corpus, pin):
+        raise corpus_mod.CorpusError(
