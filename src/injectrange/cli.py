@@ -86,3 +86,15 @@ def _cmd_corpus(args: argparse.Namespace) -> int:
 
 def _cmd_diff(args: argparse.Namespace) -> int:
     try:
+        corpus = _load_corpus(args.corpus, args.pin, args.allow_unpinned)
+        base = guard_mod.load(args.base)
+        head = guard_mod.load(args.head)
+    except (corpus_mod.CorpusError, guard_mod.GuardError) as exc:
+        sys.stderr.write("error: %s\n" % exc)
+        return EXIT_USAGE
+    base_result = harness.run(corpus, base)
+    head_result = harness.run(corpus, head)
+    _emit(report.render_diff(base_result, head_result))
+    return EXIT_FINDINGS if head_result.any_breach else EXIT_CLEAN
+
+
