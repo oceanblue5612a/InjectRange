@@ -110,3 +110,15 @@ def build_parser() -> argparse.ArgumentParser:
         description="Deterministic regression range for prompt-injection defences.",
     )
     sub = parser.add_subparsers(dest="command")
+
+    default_corpus = _default_corpus_path()
+
+    p_run = sub.add_parser("run", help="evaluate a guard against the corpus")
+    p_run.add_argument("guard", help="path to a guard config JSON file")
+    p_run.add_argument("--corpus", default=default_corpus,
+                       help="path to the corpus JSON file")
+    p_run.add_argument("--pin", default=PINNED_DIGEST,
+                       help="expected corpus digest")
+    p_run.add_argument("--allow-unpinned", action="store_true",
+                       help="skip the corpus digest check")
+    p_run.set_defaults(func=_cmd_run)
