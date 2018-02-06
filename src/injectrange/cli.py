@@ -98,3 +98,15 @@ def _cmd_diff(args: argparse.Namespace) -> int:
     return EXIT_FINDINGS if head_result.any_breach else EXIT_CLEAN
 
 
+def _cmd_version(_args: argparse.Namespace) -> int:
+    sys.stdout.write("injectrange %s\n" % __version__)
+    return EXIT_CLEAN
+
+
+def build_parser() -> argparse.ArgumentParser:
+    """Build the argument parser with all subcommands."""
+    parser = argparse.ArgumentParser(
+        prog="injectrange",
+        description="Deterministic regression range for prompt-injection defences.",
+    )
+    sub = parser.add_subparsers(dest="command")
