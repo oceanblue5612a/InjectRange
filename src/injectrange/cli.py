@@ -122,3 +122,15 @@ def build_parser() -> argparse.ArgumentParser:
     p_run.add_argument("--allow-unpinned", action="store_true",
                        help="skip the corpus digest check")
     p_run.set_defaults(func=_cmd_run)
+
+    p_corpus = sub.add_parser("corpus", help="summarize and verify the corpus")
+    p_corpus.add_argument("--corpus", default=default_corpus,
+                          help="path to the corpus JSON file")
+    p_corpus.add_argument("--pin", default=PINNED_DIGEST,
+                          help="expected corpus digest")
+    p_corpus.add_argument("--allow-unpinned", action="store_true",
+                          help="skip the corpus digest check")
+    p_corpus.add_argument("--show-digest", action="store_true",
+                          help="print only the computed digest and exit")
+    p_corpus.set_defaults(func=_cmd_corpus)
+
