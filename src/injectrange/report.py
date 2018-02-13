@@ -9,3 +9,13 @@ from __future__ import annotations
 
 from typing import Dict, List
 
+from . import classes
+from .harness import RunResult
+
+
+def _status(breached: bool) -> str:
+    return "BREACH" if breached else "closed"
+
+
+def render_matrix(result: RunResult) -> List[str]:
+    """Return the per-class matrix for one run as a list of lines."""
