@@ -19,3 +19,13 @@ def _status(breached: bool) -> str:
 
 def render_matrix(result: RunResult) -> List[str]:
     """Return the per-class matrix for one run as a list of lines."""
+    lines: List[str] = []
+    lines.append("guard: %s" % result.guard_name)
+    lines.append("corpus: %s" % result.corpus_version)
+    lines.append("digest: %s" % result.corpus_digest)
+    lines.append("")
+    header = "%-22s %6s %7s %7s  %s" % (
+        "class", "total", "blocked", "leaked", "status")
+    lines.append(header)
+    lines.append("-" * len(header))
+    for outcome in result.outcomes:
