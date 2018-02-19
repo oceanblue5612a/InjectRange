@@ -39,3 +39,13 @@ def render_matrix(result: RunResult) -> List[str]:
         ))
     lines.append("-" * len(header))
     breached = result.breached_classes
+    lines.append("breached classes: %d of %d" % (
+        len(breached), len(result.outcomes)))
+    return lines
+
+
+def _by_class(result: RunResult) -> Dict[str, "object"]:
+    return {o.cls: o for o in result.outcomes}
+
+
+def render_diff(base: RunResult, head: RunResult) -> List[str]:
