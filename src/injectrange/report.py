@@ -29,3 +29,13 @@ def render_matrix(result: RunResult) -> List[str]:
     lines.append(header)
     lines.append("-" * len(header))
     for outcome in result.outcomes:
+        title = classes.get_class(outcome.cls).title
+        lines.append("%-22s %6d %7d %7d  %s" % (
+            title,
+            outcome.total,
+            outcome.blocked,
+            outcome.leaked,
+            _status(outcome.breached),
+        ))
+    lines.append("-" * len(header))
+    breached = result.breached_classes
