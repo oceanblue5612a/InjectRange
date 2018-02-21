@@ -49,3 +49,13 @@ def _by_class(result: RunResult) -> Dict[str, "object"]:
 
 
 def render_diff(base: RunResult, head: RunResult) -> List[str]:
+    """Return a diff between two runs as a list of lines.
+
+    Reports each class whose leak count changed, marking classes that opened
+    (regression) and classes that closed (improvement).
+    """
+    lines: List[str] = []
+    lines.append("diff")
+    lines.append("base guard: %s" % base.guard_name)
+    lines.append("head guard: %s" % head.guard_name)
+    if base.corpus_digest != head.corpus_digest:
