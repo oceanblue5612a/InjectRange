@@ -79,3 +79,13 @@ def render_diff(base: RunResult, head: RunResult) -> List[str]:
             change = "opened"
             opened += 1
         elif h.leaked < b.leaked:
+            change = "closed"
+            closed += 1
+        else:
+            change = "same"
+        lines.append("%-22s %12d %12d  %s" % (title, b.leaked, h.leaked, change))
+    lines.append("-" * len(header))
+    lines.append("classes opened: %d" % opened)
+    lines.append("classes closed: %d" % closed)
+    return lines
+
