@@ -59,3 +59,13 @@ def render_diff(base: RunResult, head: RunResult) -> List[str]:
     lines.append("base guard: %s" % base.guard_name)
     lines.append("head guard: %s" % head.guard_name)
     if base.corpus_digest != head.corpus_digest:
+        lines.append("warning: corpus digests differ, comparison is not like for like")
+    lines.append("")
+
+    base_map = _by_class(base)
+    head_map = _by_class(head)
+
+    header = "%-22s %12s %12s  %s" % ("class", "base leaked", "head leaked", "change")
+    lines.append(header)
+    lines.append("-" * len(header))
+
