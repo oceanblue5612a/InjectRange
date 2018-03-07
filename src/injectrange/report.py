@@ -69,3 +69,13 @@ def render_diff(base: RunResult, head: RunResult) -> List[str]:
     lines.append(header)
     lines.append("-" * len(header))
 
+    opened = 0
+    closed = 0
+    for key in classes.CLASS_KEYS:
+        b = base_map[key]
+        h = head_map[key]
+        title = classes.get_class(key).title
+        if h.leaked > b.leaked:
+            change = "opened"
+            opened += 1
+        elif h.leaked < b.leaked:
