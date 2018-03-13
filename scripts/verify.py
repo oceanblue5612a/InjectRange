@@ -28,3 +28,20 @@ README = os.path.join(ROOT, "README.md")
 SVG_NS = "{http://www.w3.org/2000/svg}"
 
 # Filter primitives that betray a decorative, non-informational asset.
+BANNED_SVG_FILTERS = ("feGaussianBlur", "feDropShadow", "feTurbulence")
+
+# The em dash in every form it has slipped through before.
+EM_DASH_FORMS = ("\u2014", "&#8212;", "&mdash;")
+
+# Marketing terms a factual README should not need.
+BANNED_MARKETING = (
+    "blazing", "blazingly", "seamless", "seamlessly", "effortless",
+    "effortlessly", "cutting-edge", "state-of-the-art", "revolutionary",
+    "game-changing", "world-class", "next-generation", "next-gen",
+    "supercharge", "unleash", "unlock the power", "powerful",
+    "robust", "leverage", "synergy", "best-in-class", "turnkey",
+    "one-stop", "delight", "magical", "magic",
+)
+
+# Text file extensions that are searched for the em dash forms.
+TEXT_EXTENSIONS = (
