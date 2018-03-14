@@ -63,3 +63,20 @@ EM_PER_CHAR_MONO = 0.60
 
 def _iter_svgs() -> List[str]:
     result = []
+    if not os.path.isdir(ASSETS_DIR):
+        return result
+    for name in sorted(os.listdir(ASSETS_DIR)):
+        if name.lower().endswith(".svg"):
+            result.append(os.path.join(ASSETS_DIR, name))
+    return result
+
+
+def _iter_text_files() -> List[str]:
+    result = []
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
+        for name in filenames:
+            ext = os.path.splitext(name)[1].lower()
+            base = name.lower()
+            if ext in TEXT_EXTENSIONS or base in (
+                ".editorconfig", ".gitattributes", ".gitignore",
