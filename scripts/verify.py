@@ -45,3 +45,21 @@ BANNED_MARKETING = (
 
 # Text file extensions that are searched for the em dash forms.
 TEXT_EXTENSIONS = (
+    ".py", ".md", ".txt", ".json", ".toml", ".cfg", ".ini", ".yml",
+    ".yaml", ".svg", ".cff", ".editorconfig", ".gitattributes",
+    ".gitignore", "",
+)
+
+# Directories that never carry tracked, human-authored text.
+SKIP_DIRS = {
+    "__pycache__", ".git", ".venv", "venv", "build", "dist",
+    ".eggs", ".pytest_cache",
+}
+
+# Rough per-character advance widths in em units, from LESSONS.md rule 4.
+EM_PER_CHAR_SANS = 0.58
+EM_PER_CHAR_MONO = 0.60
+
+
+def _iter_svgs() -> List[str]:
+    result = []
