@@ -98,3 +98,20 @@ def check_svg_parses() -> Tuple[bool, str]:
     """Every .svg under docs/assets/ parses as XML."""
     failures = []
     for path in _iter_svgs():
+        try:
+            ET.parse(path)
+        except ET.ParseError as exc:
+            failures.append("%s (%s)" % (_rel(path), exc))
+    if failures:
+        return False, "svg parses as XML: " + "; ".join(failures)
+    return True, "svg parses as XML: all clean"
+
+
+def check_no_banned_filters() -> Tuple[bool, str]:
+    """No .svg contains feGaussianBlur, feDropShadow, or feTurbulence."""
+    failures = []
+    for path in _iter_svgs():
+        text = _read(path)
+        for banned in BANNED_SVG_FILTERS:
+            if banned in text:
+                failures.append("%s has %s" % (_rel(path), banned))
