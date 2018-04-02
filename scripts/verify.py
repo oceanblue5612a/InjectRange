@@ -133,3 +133,21 @@ def check_no_illegal_comment() -> Tuple[bool, str]:
     if failures:
         return False, "no illegal -- in svg comments: " + "; ".join(failures)
     return True, "no illegal -- in svg comments: all clean"
+
+
+def check_no_em_dash() -> Tuple[bool, str]:
+    """No tracked text file contains U+2014, &#8212;, or &mdash;."""
+    failures = []
+    for path in _iter_text_files():
+        try:
+            text = _read(path)
+        except (OSError, UnicodeDecodeError):
+            continue
+        for form in EM_DASH_FORMS:
+            if form in text:
+                failures.append("%s has %r" % (_rel(path), form))
+    if failures:
+        return False, "no em dash in any form: " + "; ".join(failures)
+    return True, "no em dash in any form: all clean"
+
+
