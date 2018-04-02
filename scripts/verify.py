@@ -168,3 +168,21 @@ def check_readme_no_marketing() -> Tuple[bool, str]:
         return True, "no marketing terms: README.md absent"
     text = _read(README).lower()
     hits = []
+    for term in BANNED_MARKETING:
+        if re.search(r"\b" + re.escape(term) + r"\b", text):
+            hits.append(term)
+    if hits:
+        return False, "no marketing terms: README.md has " + ", ".join(hits)
+    return True, "no marketing terms: README.md clean"
+
+
+def _find_labels(path: str):
+    """Return every <title>, <desc>, viewBox, role for one SVG root."""
+    tree = ET.parse(path)
+    root = tree.getroot()
+    view_box = root.get("viewBox")
+    role = root.get("role")
+    titles = root.findall(".//%stitle" % SVG_NS)
+    descs = root.findall(".//%sdesc" % SVG_NS)
+    return view_box, role, titles, descs
+
