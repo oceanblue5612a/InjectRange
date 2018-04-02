@@ -115,3 +115,21 @@ def check_no_banned_filters() -> Tuple[bool, str]:
         for banned in BANNED_SVG_FILTERS:
             if banned in text:
                 failures.append("%s has %s" % (_rel(path), banned))
+    if failures:
+        return False, "no banned svg filters: " + "; ".join(failures)
+    return True, "no banned svg filters: all clean"
+
+
+def check_no_illegal_comment() -> Tuple[bool, str]:
+    """No XML comment in any .svg contains the illegal -- sequence."""
+    failures = []
+    comment = re.compile(r"<!--(.*?)-->", re.DOTALL)
+    for path in _iter_svgs():
+        text = _read(path)
+        for body in comment.findall(text):
+            if "--" in body:
+                failures.append(_rel(path))
+                break
+    if failures:
+        return False, "no illegal -- in svg comments: " + "; ".join(failures)
+    return True, "no illegal -- in svg comments: all clean"
