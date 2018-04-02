@@ -151,3 +151,20 @@ def check_no_em_dash() -> Tuple[bool, str]:
     return True, "no em dash in any form: all clean"
 
 
+def check_readme_no_pandoc_attr() -> Tuple[bool, str]:
+    """README.md has no pandoc image attribute block like ){width=...}."""
+    if not os.path.isfile(README):
+        return True, "no pandoc image attributes: README.md absent"
+    text = _read(README)
+    pattern = re.compile(r"\)\{[^}]*(?:width|height)[^}]*\}")
+    if pattern.search(text):
+        return False, "no pandoc image attributes: README.md has one"
+    return True, "no pandoc image attributes: README.md clean"
+
+
+def check_readme_no_marketing() -> Tuple[bool, str]:
+    """README.md contains none of the banned marketing terms."""
+    if not os.path.isfile(README):
+        return True, "no marketing terms: README.md absent"
+    text = _read(README).lower()
+    hits = []
