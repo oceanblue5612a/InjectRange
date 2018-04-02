@@ -80,3 +80,21 @@ def _iter_text_files() -> List[str]:
             base = name.lower()
             if ext in TEXT_EXTENSIONS or base in (
                 ".editorconfig", ".gitattributes", ".gitignore",
+            ):
+                result.append(os.path.join(dirpath, name))
+    return sorted(result)
+
+
+def _read(path: str) -> str:
+    with open(path, "r", encoding="utf-8") as handle:
+        return handle.read()
+
+
+def _rel(path: str) -> str:
+    return os.path.relpath(path, ROOT).replace(os.sep, "/")
+
+
+def check_svg_parses() -> Tuple[bool, str]:
+    """Every .svg under docs/assets/ parses as XML."""
+    failures = []
+    for path in _iter_svgs():
