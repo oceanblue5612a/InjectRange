@@ -186,3 +186,20 @@ def _find_labels(path: str):
     descs = root.findall(".//%sdesc" % SVG_NS)
     return view_box, role, titles, descs
 
+
+def check_svg_accessible() -> Tuple[bool, str]:
+    """Every .svg carries viewBox, role="img", a <title>, and a <desc>."""
+    failures = []
+    for path in _iter_svgs():
+        view_box, role, titles, descs = _find_labels(path)
+        missing = []
+        if not view_box:
+            missing.append("viewBox")
+        if role != "img":
+            missing.append('role="img"')
+        if not titles:
+            missing.append("<title>")
+        if not descs:
+            missing.append("<desc>")
+        if missing:
+            failures.append("%s missing %s" % (_rel(path), ", ".join(missing)))
