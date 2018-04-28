@@ -203,3 +203,21 @@ def check_svg_accessible() -> Tuple[bool, str]:
             missing.append("<desc>")
         if missing:
             failures.append("%s missing %s" % (_rel(path), ", ".join(missing)))
+    if failures:
+        return False, "svg is a labelled graphic: " + "; ".join(failures)
+    return True, "svg is a labelled graphic: all clean"
+
+
+def _is_mono(font_family: str) -> bool:
+    return "mono" in (font_family or "").lower()
+
+
+def _text_content(elem: ET.Element) -> str:
+    parts = []
+    if elem.text:
+        parts.append(elem.text)
+    for child in elem:
+        if child.text:
+            parts.append(child.text)
+        if child.tail:
+            parts.append(child.tail)
