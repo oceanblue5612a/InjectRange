@@ -221,3 +221,20 @@ def _text_content(elem: ET.Element) -> str:
             parts.append(child.text)
         if child.tail:
             parts.append(child.tail)
+    return "".join(parts)
+
+
+def check_no_label_overlap() -> Tuple[bool, str]:
+    """No two text labels sharing a baseline in any .svg overlap."""
+    failures = []
+    for path in _iter_svgs():
+        tree = ET.parse(path)
+        root = tree.getroot()
+        rows = {}
+        for text_elem in root.findall(".//%stext" % SVG_NS):
+            try:
+                x = float(text_elem.get("x", "0"))
+                y = float(text_elem.get("y", "0"))
+                size = float(text_elem.get("font-size", "0"))
+            except ValueError:
+                continue
