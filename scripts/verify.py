@@ -238,3 +238,21 @@ def check_no_label_overlap() -> Tuple[bool, str]:
                 size = float(text_elem.get("font-size", "0"))
             except ValueError:
                 continue
+            content = _text_content(text_elem)
+            if not content.strip():
+                continue
+            per_char = (
+                EM_PER_CHAR_MONO if _is_mono(text_elem.get("font-family", ""))
+                else EM_PER_CHAR_SANS
+            )
+            width = len(content) * per_char * size
+            anchor = text_elem.get("text-anchor", "start")
+            if anchor == "middle":
+                left = x - width / 2.0
+            elif anchor == "end":
+                left = x - width
+            else:
+                left = x
+            right = left + width
+            rows.setdefault(round(y), []).append((left, right, content))
+        for y_key, spans in rows.items():
