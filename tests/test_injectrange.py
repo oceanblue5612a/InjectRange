@@ -48,3 +48,17 @@ class CorpusTest(unittest.TestCase):
     def test_digest_is_stable(self):
         a = corpus_mod.load(CORPUS_PATH)
         b = corpus_mod.load(CORPUS_PATH)
+        self.assertEqual(a.digest, b.digest)
+        self.assertEqual(a.digest, cli.PINNED_DIGEST)
+
+    def test_digest_matches_pin(self):
+        c = corpus_mod.load(CORPUS_PATH)
+        self.assertTrue(corpus_mod.verify(c, cli.PINNED_DIGEST))
+        self.assertFalse(corpus_mod.verify(c, "0" * 64))
+
+    def test_digest_independent_of_pattern_order(self):
+        c = corpus_mod.load(CORPUS_PATH)
+        shuffled = list(reversed(c.patterns))
+        self.assertEqual(
+            corpus_mod.compute_digest(c.version, c.patterns),
+            corpus_mod.compute_digest(c.version, shuffled),
