@@ -62,3 +62,18 @@ class CorpusTest(unittest.TestCase):
         self.assertEqual(
             corpus_mod.compute_digest(c.version, c.patterns),
             corpus_mod.compute_digest(c.version, shuffled),
+        )
+
+    def test_rejects_unknown_class(self):
+        path = os.path.join(HERE, "_bad_corpus.json")
+        with open(path, "w", encoding="utf-8") as handle:
+            handle.write('{"corpus_version":"x","patterns":[{"id":"a","cls":"ghost","text":"t"}]}')
+        try:
+            with self.assertRaises(corpus_mod.CorpusError):
+                corpus_mod.load(path)
+        finally:
+            os.remove(path)
+
+    def test_rejects_duplicate_id(self):
+        path = os.path.join(HERE, "_dup_corpus.json")
+        with open(path, "w", encoding="utf-8") as handle:
