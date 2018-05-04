@@ -33,3 +33,18 @@ class ClassesTest(unittest.TestCase):
 
     def test_is_known(self):
         self.assertTrue(classes.is_known("tool_coercion"))
+        self.assertFalse(classes.is_known("tool_coercian"))
+
+
+class CorpusTest(unittest.TestCase):
+    def test_load_and_shape(self):
+        c = corpus_mod.load(CORPUS_PATH)
+        self.assertEqual(c.version, "1.0.0")
+        self.assertEqual(len(c.patterns), 24)
+        counts = corpus_mod.counts_by_class(c)
+        for key in classes.CLASS_KEYS:
+            self.assertEqual(counts[key], 4)
+
+    def test_digest_is_stable(self):
+        a = corpus_mod.load(CORPUS_PATH)
+        b = corpus_mod.load(CORPUS_PATH)
