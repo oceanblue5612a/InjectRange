@@ -106,3 +106,18 @@ class GuardTest(unittest.TestCase):
         self.assertGreater(len(strict.rules), len(perm.rules))
 
     def test_rejects_bad_config(self):
+        with self.assertRaises(guard_mod.GuardError):
+            guard_mod.from_config({"name": "", "rules": []})
+        with self.assertRaises(guard_mod.GuardError):
+            guard_mod.from_config({"name": "t", "rules": "not a list"})
+
+
+class HarnessTest(unittest.TestCase):
+    def setUp(self):
+        self.corpus = corpus_mod.load(CORPUS_PATH)
+
+    def test_permissive_breaches_all(self):
+        g = guard_mod.load(PERMISSIVE)
+        result = harness.run(self.corpus, g)
+        self.assertTrue(result.any_breach)
+        self.assertEqual(len(result.breached_classes), 6)
