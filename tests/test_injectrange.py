@@ -121,3 +121,17 @@ class HarnessTest(unittest.TestCase):
         result = harness.run(self.corpus, g)
         self.assertTrue(result.any_breach)
         self.assertEqual(len(result.breached_classes), 6)
+
+    def test_strict_leaves_one_class(self):
+        g = guard_mod.load(STRICT)
+        result = harness.run(self.corpus, g)
+        self.assertTrue(result.any_breach)
+        self.assertEqual(result.breached_classes, ["delimiter_escape"])
+
+    def test_outcomes_ordered_by_taxonomy(self):
+        g = guard_mod.load(STRICT)
+        result = harness.run(self.corpus, g)
+        self.assertEqual([o.cls for o in result.outcomes], classes.CLASS_KEYS)
+
+    def test_totals_and_blocked_add_up(self):
+        g = guard_mod.load(STRICT)
