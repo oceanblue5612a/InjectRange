@@ -77,3 +77,18 @@ class CorpusTest(unittest.TestCase):
     def test_rejects_duplicate_id(self):
         path = os.path.join(HERE, "_dup_corpus.json")
         with open(path, "w", encoding="utf-8") as handle:
+            handle.write('{"corpus_version":"x","patterns":['
+                         '{"id":"a","cls":"role_confusion","text":"t"},'
+                         '{"id":"a","cls":"role_confusion","text":"u"}]}')
+        try:
+            with self.assertRaises(corpus_mod.CorpusError):
+                corpus_mod.load(path)
+        finally:
+            os.remove(path)
+
+
+class GuardTest(unittest.TestCase):
+    def test_blocks_is_case_insensitive(self):
+        g = guard_mod.from_config({"name": "t", "rules": ["you are now"]})
+        self.assertTrue(g.blocks("YOU ARE NOW something"))
+        self.assertFalse(g.blocks("harmless text"))
