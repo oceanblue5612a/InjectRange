@@ -92,3 +92,17 @@ class GuardTest(unittest.TestCase):
         g = guard_mod.from_config({"name": "t", "rules": ["you are now"]})
         self.assertTrue(g.blocks("YOU ARE NOW something"))
         self.assertFalse(g.blocks("harmless text"))
+
+    def test_matching_rule(self):
+        g = guard_mod.from_config({"name": "t", "rules": ["shell tool"]})
+        self.assertEqual(g.matching_rule("call the shell tool"), "shell tool")
+        self.assertEqual(g.matching_rule("nothing here"), "")
+
+    def test_load_samples(self):
+        perm = guard_mod.load(PERMISSIVE)
+        strict = guard_mod.load(STRICT)
+        self.assertEqual(perm.name, "permissive")
+        self.assertEqual(strict.name, "strict")
+        self.assertGreater(len(strict.rules), len(perm.rules))
+
+    def test_rejects_bad_config(self):
