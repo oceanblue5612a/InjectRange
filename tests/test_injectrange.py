@@ -150,3 +150,17 @@ class ReportTest(unittest.TestCase):
         a = report.render_matrix(result)
         b = report.render_matrix(result)
         self.assertEqual(a, b)
+        self.assertIn("breached classes: 1 of 6", a)
+
+    def test_diff_reports_closed_classes(self):
+        base = harness.run(self.corpus, guard_mod.load(PERMISSIVE))
+        head = harness.run(self.corpus, guard_mod.load(STRICT))
+        lines = report.render_diff(base, head)
+        self.assertIn("classes closed: 5", lines)
+        self.assertIn("classes opened: 0", lines)
+
+
+class CliTest(unittest.TestCase):
+    def _capture(self, argv):
+        out = io.StringIO()
+        err = io.StringIO()
