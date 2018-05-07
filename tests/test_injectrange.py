@@ -164,3 +164,18 @@ class CliTest(unittest.TestCase):
     def _capture(self, argv):
         out = io.StringIO()
         err = io.StringIO()
+        old_out, old_err = sys.stdout, sys.stderr
+        sys.stdout, sys.stderr = out, err
+        try:
+            code = cli.main(argv)
+        finally:
+            sys.stdout, sys.stderr = old_out, old_err
+        return code, out.getvalue(), err.getvalue()
+
+    def test_version_exits_clean(self):
+        code, out, _ = self._capture(["version"])
+        self.assertEqual(code, cli.EXIT_CLEAN)
+        self.assertIn("injectrange", out)
+
+    def test_run_permissive_exits_findings(self):
+        code, out, _ = self._capture(["run", PERMISSIVE, "--corpus", CORPUS_PATH])
