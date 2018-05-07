@@ -135,3 +135,18 @@ class HarnessTest(unittest.TestCase):
 
     def test_totals_and_blocked_add_up(self):
         g = guard_mod.load(STRICT)
+        result = harness.run(self.corpus, g)
+        for o in result.outcomes:
+            self.assertEqual(o.total, o.blocked + o.leaked)
+
+
+class ReportTest(unittest.TestCase):
+    def setUp(self):
+        self.corpus = corpus_mod.load(CORPUS_PATH)
+
+    def test_matrix_is_deterministic(self):
+        g = guard_mod.load(STRICT)
+        result = harness.run(self.corpus, g)
+        a = report.render_matrix(result)
+        b = report.render_matrix(result)
+        self.assertEqual(a, b)
