@@ -97,3 +97,20 @@ def load(path: str) -> Corpus:
         if not classes.is_known(cls):
             raise CorpusError("pattern %r has unknown class %r" % (pid, cls))
         if not isinstance(text, str) or not text:
+            raise CorpusError("pattern %r has invalid text" % pid)
+        patterns.append(Pattern(id=pid, cls=cls, text=text))
+
+    digest = compute_digest(version, patterns)
+    return Corpus(version=version, patterns=patterns, digest=digest)
+
+
+def verify(corpus: Corpus, expected_digest: str) -> bool:
+    """Report whether a loaded corpus matches an expected pinned digest."""
+    return corpus.digest == expected_digest
+
+
+def counts_by_class(corpus: Corpus) -> Dict[str, int]:
+    """Return the number of patterns per breach class, in taxonomy order."""
+    result = {key: 0 for key in classes.CLASS_KEYS}
+    for pattern in corpus.patterns:
+        result[pattern.cls] += 1
