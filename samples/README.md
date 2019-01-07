@@ -13,3 +13,8 @@ pinned by a canonical sha256 digest computed by the loader; the pinned value
 lives in `src/injectrange/cli.py` as `PINNED_DIGEST` and is checked by tests.
 
 Recompute the digest at any time with:
+
+```
+injectrange corpus --show-digest
+```
+
