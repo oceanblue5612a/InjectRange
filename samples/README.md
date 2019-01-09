@@ -18,3 +18,7 @@ Recompute the digest at any time with:
 injectrange corpus --show-digest
 ```
 
+## guard-permissive.json
+
+A guard with only two blocking rules. It is intended to leave every breach
+class open, so a run against it reports the worst case and the diff has a clear
