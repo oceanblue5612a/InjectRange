@@ -1,0 +1,3 @@
+{
+  "corpus_version": "1.0.0",
+  "note": "Synthetic pattern skeletons for regression testing a local guard. Each entry is a short filter probe, not usable attack instructions.",
