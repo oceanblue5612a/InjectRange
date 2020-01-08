@@ -1,2 +1,5 @@
 {
   "name": "strict",
+  "rules": [
+    "ignore all previous",
+    "disregard the rules",
