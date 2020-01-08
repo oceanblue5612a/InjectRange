@@ -1,3 +1,4 @@
 {
   "name": "permissive",
   "rules": [
+    "ignore all previous",
