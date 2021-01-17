@@ -8,3 +8,6 @@ runs a pinned probe corpus against a guard and never talks to a live model.
 - Python 3.11+. The package uses the standard library only.
 
 ```bash
+python -m compileall -q src
+python -m pytest -q
+PYTHONPATH=src python -m injectrange --help
