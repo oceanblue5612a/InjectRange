@@ -11,3 +11,6 @@ runs a pinned probe corpus against a guard and never talks to a live model.
 python -m compileall -q src
 python -m pytest -q
 PYTHONPATH=src python -m injectrange --help
+```
+
+## Before you open a pull request
