@@ -6,3 +6,7 @@ on:
   pull_request:
 
 jobs:
+  test:
+    name: Python (compile, tests, smoke)
+    runs-on: ubuntu-latest
+    steps:
