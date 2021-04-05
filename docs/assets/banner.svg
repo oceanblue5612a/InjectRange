@@ -6,3 +6,7 @@
     </linearGradient>
     <linearGradient id="guard" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#e05d6f"/>
+      <stop offset="1" stop-color="#b83b4d"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="260" fill="url(#bg)"/>
