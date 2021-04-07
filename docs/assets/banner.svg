@@ -10,3 +10,7 @@
     </linearGradient>
   </defs>
   <rect width="960" height="260" fill="url(#bg)"/>
+  <g stroke="#33191f" stroke-width="1">
+    <path d="M0 65 H960 M0 130 H960 M0 195 H960 M240 0 V260 M480 0 V260 M720 0 V260"/>
+  </g>
+  <text x="48" y="92" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#fdeef1">InjectRange</text>
