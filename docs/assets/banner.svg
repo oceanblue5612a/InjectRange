@@ -26,3 +26,7 @@
     <circle cx="228" cy="30" r="5" fill="#e05d6f"/>
     <text x="244" y="35" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#e0a3ab">breach</text>
     <text x="0" y="76" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#a1737d">probes</text>
+    <text x="196" y="76" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#a1737d">guard</text>
+  </g>
+  <g transform="translate(560 60)">
+    <text x="0" y="0" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#b07f89">classes</text>
