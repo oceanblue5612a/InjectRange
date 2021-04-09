@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340" role="img"
+     aria-labelledby="mxTitle mxDesc" width="520" height="340">
+  <!--
+    Palette reason: this graphic reports two guard states, so two core colours
+    carry meaning. Blocked green #2f7d5b marks a class the guard closed; breach
+    red #b3402a is the accent and marks a class that leaked. Slate ink #1f2933
+    is neutral for labels. Flat fills only, no gradient, no AI-default scheme.
+    Numbers are the leaked count over total probes, taken from real CLI runs:
