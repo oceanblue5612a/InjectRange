@@ -22,3 +22,7 @@
       <circle cx="24" cy="16" r="4"/><circle cx="60" cy="40" r="4"/>
       <circle cx="96" cy="14" r="4"/><circle cx="132" cy="42" r="4"/>
       <circle cx="168" cy="18" r="4"/>
+    </g>
+    <circle cx="228" cy="30" r="5" fill="#e05d6f"/>
+    <text x="244" y="35" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#e0a3ab">breach</text>
+    <text x="0" y="76" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" fill="#a1737d">probes</text>
