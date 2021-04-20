@@ -6,3 +6,9 @@
     red #b3402a is the accent and marks a class that leaked. Slate ink #1f2933
     is neutral for labels. Flat fills only, no gradient, no AI-default scheme.
     Numbers are the leaked count over total probes, taken from real CLI runs:
+      injectrange run samples/guard-permissive.json
+      injectrange run samples/guard-strict.json
+    White text on both cell colours meets WCAG AA (4.99:1 green, 5.7:1 red).
+  -->
+  <title id="mxTitle">Breach matrix, permissive against strict guard</title>
+  <desc id="mxDesc">Six breach classes by two guard configs. Each cell shows
