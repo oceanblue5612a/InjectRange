@@ -24,3 +24,10 @@
 
   <!-- Column headers -->
   <text x="300" y="64" text-anchor="middle"
+        font-family='"Cascadia Mono", "JetBrains Mono", Consolas, "DejaVu Sans Mono", monospace'
+        font-size="12" font-weight="700" fill="#1f2933">permissive</text>
+  <text x="404" y="64" text-anchor="middle"
+        font-family='"Cascadia Mono", "JetBrains Mono", Consolas, "DejaVu Sans Mono", monospace'
+        font-size="12" font-weight="700" fill="#1f2933">strict</text>
+
+  <!-- Rows: y start 76, row height 36, cell width 88, gap 8 -->
