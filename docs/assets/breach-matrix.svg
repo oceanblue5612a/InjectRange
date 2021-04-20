@@ -12,3 +12,9 @@
   -->
   <title id="mxTitle">Breach matrix, permissive against strict guard</title>
   <desc id="mxDesc">Six breach classes by two guard configs. Each cell shows
+    leaked over total probes and whether the class breached. The permissive
+    guard breaches all six classes; the strict guard closes five and leaves
+    delimiter escape open.</desc>
+
+  <rect x="0" y="0" width="520" height="340" fill="#ffffff"/>
+
