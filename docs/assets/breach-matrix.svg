@@ -37,3 +37,9 @@
   <text x="16" y="94" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12" fill="#1f2933">Instruction override</text>
   <rect x="256" y="78" width="88" height="28" rx="3" fill="#b3402a"/>
   <text x="300" y="96" text-anchor="middle" font-family='"Cascadia Mono", "JetBrains Mono", Consolas, "DejaVu Sans Mono", monospace' font-size="12" fill="#ffffff">3 / 4</text>
+  <rect x="360" y="78" width="88" height="28" rx="3" fill="#2f7d5b"/>
+  <text x="404" y="96" text-anchor="middle" font-family='"Cascadia Mono", "JetBrains Mono", Consolas, "DejaVu Sans Mono", monospace' font-size="12" fill="#ffffff">0 / 4</text>
+
+  <!-- role_confusion: perm 3/4 breach, strict 0/4 closed -->
+  <text x="16" y="130" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12" fill="#1f2933">Role confusion</text>
+  <rect x="256" y="114" width="88" height="28" rx="3" fill="#b3402a"/>
