@@ -49,3 +49,9 @@
 
   <!-- delimiter_escape: perm 4/4 breach, strict 4/4 breach -->
   <text x="16" y="166" font-family='-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' font-size="12" fill="#1f2933">Delimiter escape</text>
+  <rect x="256" y="150" width="88" height="28" rx="3" fill="#b3402a"/>
+  <text x="300" y="168" text-anchor="middle" font-family='"Cascadia Mono", "JetBrains Mono", Consolas, "DejaVu Sans Mono", monospace' font-size="12" fill="#ffffff">4 / 4</text>
+  <rect x="360" y="150" width="88" height="28" rx="3" fill="#b3402a"/>
+  <text x="404" y="168" text-anchor="middle" font-family='"Cascadia Mono", "JetBrains Mono", Consolas, "DejaVu Sans Mono", monospace' font-size="12" fill="#ffffff">4 / 4</text>
+
+  <!-- encoding_smuggling: perm 4/4 breach, strict 0/4 closed -->
