@@ -1,3 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 96" role="img"
      aria-labelledby="logoTitle logoDesc" width="240" height="96">
   <!--
+    Palette reason: the tool sorts injection probes into two states, blocked and
+    breaching. Two core colours carry those states: slate ink #1f2933 for the
+    "inject" morpheme (the incoming probe) and blocked green #2f7d5b for the
+    "range" morpheme (the guard that holds). The single accent, breach red
