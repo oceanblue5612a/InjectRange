@@ -9,3 +9,7 @@
     scheme: no indigo, violet, cyan, or neon on black.
   -->
   <title id="logoTitle">injectrange</title>
+  <desc id="logoDesc">Wordmark split at the inject and range morphemes, with one
+    accent mark showing a single probe that breaches the guard.</desc>
+
+  <rect x="0" y="0" width="240" height="96" fill="#ffffff"/>
