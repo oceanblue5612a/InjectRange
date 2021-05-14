@@ -21,3 +21,7 @@
     <rect x="16" y="44" width="8" height="6" rx="3" fill="#b3402a"/>
     <rect x="16" y="54" width="8" height="6" rx="3" fill="#1f2933"/>
     <rect x="16" y="64" width="8" height="6" rx="3" fill="#1f2933"/>
+  </g>
+
+  <!-- The guard boundary the probes are tested against. -->
+  <rect x="34" y="20" width="3" height="56" fill="#2f7d5b"/>
