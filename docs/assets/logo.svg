@@ -13,3 +13,7 @@
     accent mark showing a single probe that breaches the guard.</desc>
 
   <rect x="0" y="0" width="240" height="96" fill="#ffffff"/>
+
+  <!-- Six probe ticks entering from the left, one breaches (accent). -->
+  <g>
+    <rect x="16" y="24" width="8" height="6" rx="3" fill="#1f2933"/>
