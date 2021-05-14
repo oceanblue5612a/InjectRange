@@ -17,3 +17,7 @@
   <!-- Six probe ticks entering from the left, one breaches (accent). -->
   <g>
     <rect x="16" y="24" width="8" height="6" rx="3" fill="#1f2933"/>
+    <rect x="16" y="34" width="8" height="6" rx="3" fill="#1f2933"/>
+    <rect x="16" y="44" width="8" height="6" rx="3" fill="#b3402a"/>
+    <rect x="16" y="54" width="8" height="6" rx="3" fill="#1f2933"/>
+    <rect x="16" y="64" width="8" height="6" rx="3" fill="#1f2933"/>
