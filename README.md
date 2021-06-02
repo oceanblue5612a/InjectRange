@@ -563,4 +563,4 @@ These are directions, not dated promises.
 
 MIT, see [LICENSE](LICENSE).
 
-<!-- draft note 672 -->
+<!-- draft note 673 -->
