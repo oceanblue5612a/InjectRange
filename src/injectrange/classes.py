@@ -58,3 +58,14 @@ CLASS_KEYS: List[str] = [c.key for c in BREACH_CLASSES]
 _BY_KEY: Dict[str, BreachClass] = {c.key: c for c in BREACH_CLASSES}
 
 
+def get_class(key: str) -> BreachClass:
+    """Return the breach class for a key, or raise KeyError with a clear message."""
+    try:
+        return _BY_KEY[key]
+    except KeyError:
+        known = ", ".join(CLASS_KEYS)
+        raise KeyError("unknown breach class %r; known classes: %s" % (key, known))
+
+
+def is_known(key: str) -> bool:
+    """Report whether a key names a known breach class."""
