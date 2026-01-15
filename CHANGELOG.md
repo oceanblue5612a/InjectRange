@@ -68,3 +68,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Strict validation for probe ids, classes and payload fields.
 - `version` subcommand and the first report shape.
 
+## [0.2.0] - 2016-10-18
+
+### Added
+
+- Corpus model and the first scoring pass over a guard.
+- Tool coercion as the third class, with sample probes.
+
+## [0.1.0] - 2015-06-02
+
+### Added
+
+- First release: a probe harness and a line oriented report over one guard.
+
+<!-- draft note 1609 -->
