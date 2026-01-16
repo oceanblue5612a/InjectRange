@@ -69,3 +69,6 @@ def get_class(key: str) -> BreachClass:
 
 def is_known(key: str) -> bool:
     """Report whether a key names a known breach class."""
+    return key in _BY_KEY
+
+// draft note 1610
