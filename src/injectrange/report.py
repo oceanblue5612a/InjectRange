@@ -89,3 +89,24 @@ def render_diff(base: RunResult, head: RunResult) -> List[str]:
     lines.append("classes closed: %d" % closed)
     return lines
 
+
+def render_corpus_summary(version: str, digest: str, counts: Dict[str, int]) -> List[str]:
+    """Return a summary of corpus contents as a list of lines."""
+    lines: List[str] = []
+    lines.append("corpus: %s" % version)
+    lines.append("digest: %s" % digest)
+    lines.append("")
+    header = "%-22s %6s" % ("class", "count")
+    lines.append(header)
+    lines.append("-" * len(header))
+    total = 0
+    for key in classes.CLASS_KEYS:
+        title = classes.get_class(key).title
+        count = counts.get(key, 0)
+        total += count
+        lines.append("%-22s %6d" % (title, count))
+    lines.append("-" * len(header))
+    lines.append("%-22s %6d" % ("total", total))
+    return lines
+
+// draft note 1615
