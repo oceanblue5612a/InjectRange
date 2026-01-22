@@ -16,3 +16,11 @@ jobs:
           python-version: "3.11"
       - name: Install
         run: pip install -e . pytest
+      - name: Compile
+        run: python -m compileall -q src
+      - name: Tests
+        run: python -m pytest -q
+      - name: Smoke run
+        run: PYTHONPATH=src python -m injectrange --help
+
+// draft note 1620
