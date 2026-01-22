@@ -179,3 +179,37 @@ class CliTest(unittest.TestCase):
 
     def test_run_permissive_exits_findings(self):
         code, out, _ = self._capture(["run", PERMISSIVE, "--corpus", CORPUS_PATH])
+        self.assertEqual(code, cli.EXIT_FINDINGS)
+        self.assertIn("breached classes: 6 of 6", out)
+
+    def test_run_strict_exits_findings(self):
+        code, out, _ = self._capture(["run", STRICT, "--corpus", CORPUS_PATH])
+        self.assertEqual(code, cli.EXIT_FINDINGS)
+        self.assertIn("breached classes: 1 of 6", out)
+
+    def test_corpus_summary_clean(self):
+        code, out, _ = self._capture(["corpus", "--corpus", CORPUS_PATH])
+        self.assertEqual(code, cli.EXIT_CLEAN)
+        self.assertIn("total", out)
+
+    def test_diff_exits_findings(self):
+        code, out, _ = self._capture(
+            ["diff", PERMISSIVE, STRICT, "--corpus", CORPUS_PATH])
+        self.assertEqual(code, cli.EXIT_FINDINGS)
+        self.assertIn("classes closed: 5", out)
+
+    def test_pin_mismatch_is_usage_error(self):
+        code, _, err = self._capture(
+            ["run", STRICT, "--corpus", CORPUS_PATH, "--pin", "0" * 64])
+        self.assertEqual(code, cli.EXIT_USAGE)
+        self.assertIn("does not match pin", err)
+
+    def test_no_command_is_usage_error(self):
+        code, _, _ = self._capture([])
+        self.assertEqual(code, cli.EXIT_USAGE)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+// draft note 1618
