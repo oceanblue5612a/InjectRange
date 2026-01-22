@@ -8,3 +8,7 @@ test:
 lint:
 	$(PY) -m compileall -q src
 
+smoke:
+	PYTHONPATH=src $(PY) -m injectrange --help
+
+<!-- draft note 1619 -->
