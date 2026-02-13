@@ -30,3 +30,11 @@
   </g>
   <g transform="translate(560 60)">
     <text x="0" y="0" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#b07f89">classes</text>
+    <text x="0" y="24" font-family="Consolas, Menlo, monospace" font-size="13" fill="#f2dfe3">override | confusion | escape</text>
+    <text x="0" y="46" font-family="Consolas, Menlo, monospace" font-size="13" fill="#f2dfe3">smuggling | coercion | framing</text>
+    <text x="0" y="74" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#b07f89">corpus</text>
+    <text x="0" y="98" font-family="Consolas, Menlo, monospace" font-size="13" fill="#f2dfe3">pinned by hash, mismatch is an error</text>
+    <text x="0" y="126" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#b07f89">exit codes</text>
+    <text x="0" y="150" font-family="Consolas, Menlo, monospace" font-size="13" fill="#f2dfe3">0 clean | 1 findings | 2 usage</text>
+  </g>
+</svg>
