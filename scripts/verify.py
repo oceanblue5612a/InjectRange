@@ -256,3 +256,45 @@ def check_no_label_overlap() -> Tuple[bool, str]:
             right = left + width
             rows.setdefault(round(y), []).append((left, right, content))
         for y_key, spans in rows.items():
+            spans.sort(key=lambda s: s[0])
+            for i in range(1, len(spans)):
+                prev_right = spans[i - 1][1]
+                cur_left = spans[i][0]
+                if cur_left < prev_right - 0.01:
+                    failures.append(
+                        "%s y=%s: %r overlaps %r"
+                        % (_rel(path), y_key, spans[i - 1][2], spans[i][2])
+                    )
+    if failures:
+        return False, "no overlapping svg labels: " + "; ".join(failures)
+    return True, "no overlapping svg labels: all clean"
+
+
+CHECKS = [
+    check_svg_parses,
+    check_no_banned_filters,
+    check_no_illegal_comment,
+    check_no_em_dash,
+    check_readme_no_pandoc_attr,
+    check_readme_no_marketing,
+    check_svg_accessible,
+    check_no_label_overlap,
+]
+
+
+def main() -> int:
+    failures = 0
+    for check in CHECKS:
+        ok, message = check()
+        status = "ok" if ok else "FAIL"
+        sys.stdout.write("[%s] %s\n" % (status, message))
+        if not ok:
+            failures += 1
+    sys.stdout.write(
+        "verify: %d checks, %d failures\n" % (len(CHECKS), failures)
+    )
+    return 0 if failures == 0 else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
