@@ -22,3 +22,10 @@ injectrange corpus --show-digest
 
 A guard with only two blocking rules. It is intended to leave every breach
 class open, so a run against it reports the worst case and the diff has a clear
+baseline.
+
+## guard-strict.json
+
+A guard whose rules cover the probes in five of the six classes. It closes those
+five and leaves delimiter escape open on purpose, so the range still reports a
+real breach and the diff shows real movement rather than a flat pass.
