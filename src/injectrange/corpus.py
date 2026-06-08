@@ -115,5 +115,3 @@ def counts_by_class(corpus: Corpus) -> Dict[str, int]:
     for pattern in corpus.patterns:
         result[pattern.cls] += 1
     return result
-
-// draft note 1626
