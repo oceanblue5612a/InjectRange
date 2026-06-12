@@ -69,3 +69,16 @@ def from_config(raw: dict) -> Guard:
     return Guard(name=name, rules=cleaned)
 
 
+def load(path: str) -> Guard:
+    """Load and build a guard from a JSON config file."""
+    try:
+        with open(path, "r", encoding="utf-8") as handle:
+            raw = json.load(handle)
+    except (OSError, ValueError) as exc:
+        raise GuardError("could not read guard config %r: %s" % (path, exc))
+    return from_config(raw)
+
+
+def known_class_keys() -> List[str]:
+    """Expose the taxonomy order for callers that report per class."""
+    return list(classes.CLASS_KEYS)
