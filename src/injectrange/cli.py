@@ -134,3 +134,28 @@ def build_parser() -> argparse.ArgumentParser:
                           help="print only the computed digest and exit")
     p_corpus.set_defaults(func=_cmd_corpus)
 
+    p_diff = sub.add_parser("diff", help="compare two guards against the corpus")
+    p_diff.add_argument("base", help="path to the base guard config")
+    p_diff.add_argument("head", help="path to the head guard config")
+    p_diff.add_argument("--corpus", default=default_corpus,
+                        help="path to the corpus JSON file")
+    p_diff.add_argument("--pin", default=PINNED_DIGEST,
+                        help="expected corpus digest")
+    p_diff.add_argument("--allow-unpinned", action="store_true",
+                        help="skip the corpus digest check")
+    p_diff.set_defaults(func=_cmd_diff)
+
+    p_version = sub.add_parser("version", help="print the version")
+    p_version.set_defaults(func=_cmd_version)
+
+    return parser
+
+
+def main(argv: Optional[List[str]] = None) -> int:
+    """Entry point. Return an exit code."""
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if not getattr(args, "command", None):
+        parser.print_help(sys.stderr)
+        return EXIT_USAGE
+    return args.func(args)
