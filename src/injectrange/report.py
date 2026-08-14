@@ -108,5 +108,3 @@ def render_corpus_summary(version: str, digest: str, counts: Dict[str, int]) -> 
     lines.append("-" * len(header))
     lines.append("%-22s %6d" % ("total", total))
     return lines
-
-// draft note 1623
