@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this tool, please cite it as below."
+title: "InjectRange"
+abstract: "Guard harness for prompt-injection corpora with six breach classes."
+type: software
+license: MIT
+authors:
+  - name: InjectRange contributors
+version: 1.0.0
+date-released: 2026-06-02
