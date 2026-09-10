@@ -10,5 +10,3 @@ lint:
 
 smoke:
 	PYTHONPATH=src $(PY) -m injectrange --help
-
-<!-- draft note 1621 -->
