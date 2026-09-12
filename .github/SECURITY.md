@@ -15,5 +15,3 @@ GitHub's "Report a vulnerability" button on the Security tab.
 
 We aim to acknowledge reports within 72 hours and to ship a fix in the next
 patch release.
-
-<!-- draft note 1614 -->
