@@ -80,5 +80,3 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - First release: a probe harness and a line oriented report over one guard.
-
-<!-- draft note 1609 -->
