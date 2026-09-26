@@ -10,6 +10,31 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Rule wording is being reviewed for the next patch.
 - A guard diff mode is being sketched.
 
+## [5.2.0] - 2026-08-17
+
+### Added
+
+- Per-class thresholds in the guard config file.
+
+## [4.1.0] - 2026-08-13
+
+### Added
+
+- A `diff` mode printing only the per-class delta between two guards.
+
+## [3.0.0] - 2026-07-30
+
+### Changed
+
+- Probe outcomes are ordered by class, then by probe id, in every output mode.
+
+## [2.0.0] - 2026-06-27
+
+### Added
+
+- The corpus hash is recorded in the JSON report.
+- A worked comparison of the strict and permissive guards in the docs.
+
 ## [1.0.0] - 2026-06-02
 
 ### Added
