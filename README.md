@@ -35,6 +35,9 @@ session.
 
 ## Why a pinned corpus
 
+A pinned corpus is what makes guard comparisons meaningful. Same
+probes, same order, same hash, so a delta between two runs is a real guard change and not corpus drift.
+
 A guard is a moving target. You add a rule to close one class, refactor the
 matcher, tighten a normaliser, and three commits later a rule you thought was
 redundant turns out to have been the only thing holding a class shut. Nothing
