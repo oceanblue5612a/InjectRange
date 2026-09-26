@@ -167,6 +167,9 @@ still a request to surface hidden state.
 
 ## Corpus pinning and integrity
 
+The integrity check records the corpus hash with every
+run and treats a mismatch as a usage error. A silent comparison across different corpora is the one result nobody can use.
+
 The corpus is pinned by a sha256 digest, but the digest is not taken over the
 raw file bytes. It is computed over a canonical form: the patterns are sorted by
 id, each is reduced to its id, class, and text, and the whole is serialised with
