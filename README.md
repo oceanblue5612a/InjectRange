@@ -248,6 +248,9 @@ you declare it, the corpus tests your declared rules, never a model.
 
 ## A real comparison of the two sample guards
 
+The comparison is the reason the tool
+exists: two guards, one corpus, per-class deltas with the deciding probes quoted.
+
 Two sample guards ship in `samples/`. The permissive guard has two rules and is
 meant to leave every class open, giving the diff a clear baseline. The strict
 guard has twenty rules covering five of the six classes.
